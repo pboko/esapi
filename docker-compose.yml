@@ -166,11 +166,19 @@ services:
 
   abc_book:
     image: appbaseio/abc
-    entrypoint: /abc/abc import --src_type=postgres --src_uri="postgresql://api-platform:!ChangeMe!@db:5432/api" --src_filter=.book "http://es01:9200/book"
+    volumes:
+      - ./abc/book.env:/abc/book.env
+      - ./abc/transform_book.js:/abc/transform.js
+      - ./abc/duplicate_id.js:/abc/duplicate_id.js
+    entrypoint: /abc/abc import --config=/abc/book.env
+
   abc_review:
     image: appbaseio/abc
-    entrypoint: /abc/abc import --src_type=postgres --src_uri="postgresql://api-platform:!ChangeMe!@db:5432/api" --src_filter=.review "http://es01:9200/review"
-
+    volumes:
+      - ./abc/review.env:/abc/review.env
+      - ./abc/transform_review.js:/abc/transform.js
+      - ./abc/duplicate_id.js:/abc/duplicate_id.js
+    entrypoint: /abc/abc import --config=/abc/review.env
 
 volumes:
   db-data: {}
