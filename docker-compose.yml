@@ -164,6 +164,12 @@ services:
         published: 5601
         protocol: tcp
 
+  abc:
+    image: appbaseio/abc
+    entrypoint: /abc/abc import --src_type=postgres --src_uri="postgresql://api-platform:!ChangeMe!@db:5432/api" --src_filter=.book "http://es01:9200/book"
+    entrypoint: /abc/abc import --src_type=postgres --src_uri="postgresql://api-platform:!ChangeMe!@db:5432/api" --src_filter=.eview "http://es01:9200/review"
+
+
 volumes:
   db-data: {}
   dev-certs: {}
