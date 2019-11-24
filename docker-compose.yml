@@ -171,6 +171,9 @@ services:
       - ./abc/transform_book.js:/abc/transform.js
       - ./abc/duplicate_id.js:/abc/duplicate_id.js
     entrypoint: /abc/abc import --config=/abc/book.env
+    depends_on:
+      - db
+      - es01
 
   abc_review:
     image: appbaseio/abc
@@ -179,6 +182,9 @@ services:
       - ./abc/transform_review.js:/abc/transform.js
       - ./abc/duplicate_id.js:/abc/duplicate_id.js
     entrypoint: /abc/abc import --config=/abc/review.env
+    depends_on:
+      - db
+      - es01
 
 volumes:
   db-data: {}
