@@ -164,27 +164,27 @@ services:
         published: 5601
         protocol: tcp
 
-  abc_book:
-    image: appbaseio/abc
-    volumes:
-      - ./abc/book.env:/abc/book.env
-      - ./abc/transform_book.js:/abc/transform.js
-      - ./abc/duplicate_id.js:/abc/duplicate_id.js
-    entrypoint: /abc/abc import --config=/abc/book.env
-    depends_on:
-      - db
-      - es01
+  # abc_book:
+  #   image: appbaseio/abc
+  #   volumes:
+  #     - ./abc/book.env:/abc/book.env
+  #     - ./abc/transform_book.js:/abc/transform.js
+  #     - ./abc/duplicate_id.js:/abc/duplicate_id.js
+  #   entrypoint: /abc/abc import --config=/abc/book.env
+  #   depends_on:
+  #     - db
+  #     - es01
 
-  abc_review:
-    image: appbaseio/abc
-    volumes:
-      - ./abc/review.env:/abc/review.env
-      - ./abc/transform_review.js:/abc/transform.js
-      - ./abc/duplicate_id.js:/abc/duplicate_id.js
-    entrypoint: /abc/abc import --config=/abc/review.env
-    depends_on:
-      - db
-      - es01
+  # abc_review:
+  #   image: appbaseio/abc
+  #   volumes:
+  #     - ./abc/review.env:/abc/review.env
+  #     - ./abc/transform_review.js:/abc/transform.js
+  #     - ./abc/duplicate_id.js:/abc/duplicate_id.js
+  #   entrypoint: /abc/abc import --config=/abc/review.env
+  #   depends_on:
+  #     - db
+  #     - es01
 
 volumes:
   db-data: {}
