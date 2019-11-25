@@ -5,13 +5,13 @@ namespace App\Model;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Bridge\Elasticsearch\DataProvider\Filter\MatchFilter;
+use App\Elasticsearch\Filter\FuzzyMatchFilter;
 
 /**
  * A book.
  *
  * @ApiResource
- * @ApiFilter(MatchFilter::class, properties={"author", "title"})
+ * @ApiFilter(FuzzyMatchFilter::class, properties={"author", "title"})
  */
 class Book
 {
