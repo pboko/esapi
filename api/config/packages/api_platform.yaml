@@ -5,7 +5,10 @@ api_platform:
     title: Hello API Platform
     version: 1.0.0
     mapping:
-        paths: ['%kernel.project_dir%/src/Entity']
+        paths:
+            # - '%kernel.project_dir%/src/Entity'
+            - '%kernel.project_dir%/src/Model'
+
     patch_formats:
         json: ['application/merge-patch+json']
     swagger:
@@ -14,5 +17,6 @@ api_platform:
     mercure:
         hub_url: '%env(MERCURE_SUBSCRIBE_URL)%'
 
-    # elasticsearch:
-    #     hosts: ['%env(ELASTICSEARCH_HOST)%']
+    elasticsearch:
+        enabled: true
+        hosts: ['%env(ELASTICSEARCH_HOST)%']
